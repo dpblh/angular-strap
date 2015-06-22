@@ -170,8 +170,10 @@ angular.module('mgcrea.ngStrap.datepicker', [
 
         $datepicker.$onKeyDown = function(evt) {
           if (!/(38|37|39|40|13)/.test(evt.keyCode) || evt.shiftKey || evt.altKey) return;
-          evt.preventDefault();
-          evt.stopPropagation();
+          if (/(38|37|39|40)/.test(evt.keyCode)) {
+            evt.preventDefault();
+            evt.stopPropagation();
+          }
 
           if(evt.keyCode === 13) {
             if(!scope.$mode) {
