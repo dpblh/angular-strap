@@ -248,8 +248,10 @@ angular.module('mgcrea.ngStrap.timepicker', [
 
         $timepicker.$onKeyDown = function(evt) {
           if (!/(38|37|39|40|13)/.test(evt.keyCode) || evt.shiftKey || evt.altKey) return;
-          evt.preventDefault();
-          evt.stopPropagation();
+          if (/(38|37|39|40)/.test(evt.keyCode)) {
+            evt.preventDefault();
+            evt.stopPropagation();
+          }
 
           // Close on enter
           if(evt.keyCode === 13) return $timepicker.hide(true);
